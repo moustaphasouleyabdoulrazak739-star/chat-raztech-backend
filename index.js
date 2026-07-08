@@ -4,13 +4,15 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://chat-raztech.vercel.app",
+}));
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*", // on restreindra ça plus tard avec l'URL Vercel du frontend
+    origin: "https://chat-raztech.vercel.app",
     methods: ["GET", "POST"],
   },
 });
